@@ -1,0 +1,24 @@
+<input #inputDate [value]="currentDate" type="date">
+<div>
+    <select>
+      <option #intervalSelect *ngFor="let interval of intervals" [label]="interval" [value]="interval"></option>
+    </select>
+  </div>
+<button (click)="onSubmit(inputDate.value)" >Get Entries</button>
+
+
+<h2>Totals</h2>
+<ul>
+    <li *ngFor="let typeTotal of typeTotals">
+        <span>{{ typeTotal.type }} | {{ typeTotal.total }} </span>
+    </li>
+</ul>
+
+<h2>Budget Entries</h2>
+<ul>
+    <li *ngFor="let budgetEntry of budgetEntries">
+        <span>{{ budgetEntry.type }} | {{ budgetEntry.itemName }} </span> {{ budgetEntry.price }}
+    </li>
+</ul>
+
+

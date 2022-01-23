@@ -26,6 +26,7 @@ export class AddBudgetEntryComponent implements OnInit {
   ngOnInit(): void {
     this.budgetEntryForm.get('dateBought')?.setValue(formatDateToInput(new Date()));
     this.budgetEntryForm.get('type')?.setValue(BudgetType.Want);
+    this.budgetEntryForm.get('price')?.setValue('0.00');
   }
 
   onSubmit(): void {

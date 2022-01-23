@@ -1,0 +1,25 @@
+<form [formGroup]="budgetQueryForm" (ngSubmit)="onSubmit()">
+    <label for="query-date">Query Date: </label>
+    <input id="query-date" type="date" formControlName="queryDate">
+    <label for="query-interval"></label>
+    <select id="query-interval" formControlName="queryInterval">
+        <option *ngFor="let interval of intervals" [value]="interval">{{ interval }}</option>
+    </select>
+    <button type="submit" [disabled]="!budgetQueryForm.valid">Get Data</button>
+</form>
+
+<h2>Totals</h2>
+<ul>
+    <li *ngFor="let typeTotal of typeTotals">
+        <span>{{ typeTotal.type }} | {{ typeTotal.total }} </span>
+    </li>
+</ul>
+
+<h2>Budget Entries</h2>
+<ul>
+    <li *ngFor="let budgetEntry of budgetEntries">
+        <span>{{ budgetEntry.type }} | {{ budgetEntry.itemName }} </span> {{ budgetEntry.price }}
+    </li>
+</ul>
+
+

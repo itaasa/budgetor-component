@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
-import { BudgetType } from '../budget-entry'
+import { BudgetEntry, BudgetType } from '../budget-entry'
 import { formatDateToInput } from '../date-formatter';
 
 @Component({
@@ -27,6 +27,20 @@ export class AddBudgetEntryComponent implements OnInit {
   }
 
   onSubmit(): void {
+    let itemName = this.budgetEntryForm.get('itemName')?.value;
+    let price = this.budgetEntryForm.get('price')?.value;
+    let type = this.budgetEntryForm.get('type')?.value;
+    let dateBought = new Date(this.budgetEntryForm.get('dateBought')?.value);
+    dateBought.setHours(12, 0, 0, 0);
 
+
+    let budgetEntry: BudgetEntry = {
+      itemName: itemName,
+      price: price,
+      dateBought: dateBought.toISOString(),
+      type: type
+    }
+
+    console.log(budgetEntry);
   }
 }

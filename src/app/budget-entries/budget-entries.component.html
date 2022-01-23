@@ -1,11 +1,12 @@
-<input #inputDate [value]="currentDate" type="date">
-<div>
-    <select>
-      <option #intervalSelect *ngFor="let interval of intervals" [label]="interval" [value]="interval"></option>
+<form [formGroup]="budgetQueryForm" (ngSubmit)="onSubmit()">
+    <label for="query-date">Query Date: </label>
+    <input id="query-date" type="date" formControlName="queryDate">
+    <label for="query-interval"></label>
+    <select id="query-interval" formControlName="queryInterval">
+        <option *ngFor="let interval of intervals" [value]="interval">{{ interval }}</option>
     </select>
-  </div>
-<button (click)="onSubmit(inputDate.value)" >Get Entries</button>
-
+    <button type="submit" [disabled]="!budgetQueryForm.valid">Get Data</button>
+</form>
 
 <h2>Totals</h2>
 <ul>

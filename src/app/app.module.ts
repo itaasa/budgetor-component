@@ -6,11 +6,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BudgetEntriesComponent } from './budget-entries/budget-entries.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddBudgetEntryComponent } from './add-budget-entry/add-budget-entry.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BudgetEntriesComponent
+    BudgetEntriesComponent,
+    AddBudgetEntryComponent
   ],
   imports: [
     BrowserModule,

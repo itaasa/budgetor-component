@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 import { BudgetEntry, BudgetType } from '../budget-entry'
+import { BudgetEntryService } from '../budget-entry.service';
 import { formatDateToInput } from '../date-formatter';
 
 @Component({
@@ -20,10 +21,11 @@ export class AddBudgetEntryComponent implements OnInit {
     type: new FormControl(''),
   });
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private budgetEntriesService: BudgetEntryService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.budgetEntryForm.get('dateBought')?.setValue(formatDateToInput(new Date()));
+    this.budgetEntryForm.get('type')?.setValue(BudgetType.Want);
   }
 
   onSubmit(): void {
@@ -31,9 +33,8 @@ export class AddBudgetEntryComponent implements OnInit {
     let price = this.budgetEntryForm.get('price')?.value;
     let type = this.budgetEntryForm.get('type')?.value;
     let dateBought = new Date(this.budgetEntryForm.get('dateBought')?.value);
-    dateBought.setHours(12, 0, 0, 0);
-
-
+    dateBought.setUTCHours(12, 0, 0, 0);
+    
     let budgetEntry: BudgetEntry = {
       itemName: itemName,
       price: price,
@@ -41,6 +42,8 @@ export class AddBudgetEntryComponent implements OnInit {
       type: type
     }
 
-    console.log(budgetEntry);
+    this.budgetEntriesService.insertBudgetEntry(budgetEntry).subscribe((newBudgetEntry) => {
+      console.log(`Added new budget entry: ${newBudgetEntry}`);
+    })
   }
 }

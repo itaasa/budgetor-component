@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { BudgetEntry, Interval, TypeTotal } from '../budget-entry';
 import { BudgetEntryService } from '../budget-entry.service';
-import { formatDateForApi } from '../date-formatter';
+import { formatDateForApi, formatDateToInput } from '../date-formatter';
 
 @Component({
   selector: 'app-budget-entries',
@@ -23,6 +23,7 @@ export class BudgetEntriesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.budgetQueryForm.get('queryDate')?.setValue(formatDateToInput(new Date()));
     this.budgetQueryForm.get('queryInterval')?.setValue(Interval.Weekly);
   }
 

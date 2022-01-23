@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 import { BudgetType } from '../budget-entry'
+import { formatDateToInput } from '../date-formatter';
 
 @Component({
   selector: 'app-add-budget-entry',
@@ -22,6 +23,7 @@ export class AddBudgetEntryComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.budgetEntryForm.get('dateBought')?.setValue(formatDateToInput(new Date()));
   }
 
   onSubmit(): void {

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { BudgetEntry, Interval, TypeTotal } from '../budget-entry';
 import { BudgetEntryService } from '../budget-entry.service';
+import { formatDateForApi } from '../date-formatter';
 
 @Component({
   selector: 'app-budget-entries',
@@ -26,7 +27,7 @@ export class BudgetEntriesComponent implements OnInit {
   }
 
   onSubmit() {
-    let formattedQueryDate  = this.formatDate(this.budgetQueryForm.get('queryDate')?.value);
+    let formattedQueryDate  = formatDateForApi(this.budgetQueryForm.get('queryDate')?.value);
     let queryInterval = this.budgetQueryForm.get('queryInterval')?.value;
     
     this.budgetEntriesService.getBudgetEntries(formattedQueryDate, queryInterval)
@@ -34,11 +35,5 @@ export class BudgetEntriesComponent implements OnInit {
 
     this.budgetEntriesService.getTypeTotals(formattedQueryDate, queryInterval)
     .subscribe(typeTotals => this.typeTotals = typeTotals);
-  }
-
-  formatDate(queryDate: string) {
-    const dateValues = queryDate.split('-');
-
-    return `${dateValues[1]}/${dateValues[2]}/${dateValues[0]}`;
   }
 }

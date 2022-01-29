@@ -15,8 +15,10 @@
 </div>
 
 <h2>Budget Entries</h2>
-<div *ngFor="let budgetEntry of budgetEntries">
-    <app-budget-entry [budgetEntry]="budgetEntry"></app-budget-entry>
+<div *ngIf="budgetEntries$ | async as budgetEntries">
+    <div *ngFor="let budgetEntry of budgetEntries">
+        <app-budget-entry [budgetEntry]="budgetEntry"></app-budget-entry>
+    </div>
 </div>
 
 <app-add-budget-entry></app-add-budget-entry>

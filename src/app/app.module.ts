@@ -10,6 +10,10 @@ import { AddBudgetEntryComponent } from './add-budget-entry/add-budget-entry.com
 import { BudgetEntryComponent } from './budget-entry/budget-entry.component';
 import { TypeTotalComponent } from './type-total/type-total.component';
 import { BudgetQueryComponent } from './budget-query/budget-query.component';
+import { StoreModule } from '@ngrx/store';
+import { budgetEntryReducer } from './store/budget.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { BudgetEntryEffects } from './store/budget.effect';
 
 @NgModule({
   declarations: [
@@ -26,6 +30,9 @@ import { BudgetQueryComponent } from './budget-query/budget-query.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    StoreModule.forRoot({}),
+    StoreModule.forFeature('budgetEntries', budgetEntryReducer),
+    EffectsModule.forRoot([]),
   ],
   providers: [],
   bootstrap: [AppComponent]

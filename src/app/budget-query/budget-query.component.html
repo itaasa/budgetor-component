@@ -1,9 +1,6 @@
-<form [formGroup]="budgetQueryForm" (ngSubmit)="onSubmit()">
-    <label for="query-date">Query Date: </label>
-    <input id="query-date" type="date" formControlName="queryDate">
-    <label for="query-interval"></label>
-    <select id="query-interval" formControlName="queryInterval">
-        <option *ngFor="let interval of intervals" [value]="interval">{{ interval }}</option>
-    </select>
-    <button class="button" type="submit" [disabled]="!budgetQueryForm.valid">Get Data</button>
+<form [formGroup]="budgetQueryForm">
+    <input class="input" id="query-date" type="date" formControlName="queryDate">
+    <ul *ngFor="let interval of intervals">
+        <button class="button" (click)="getData(interval)" [disabled]="!budgetQueryForm.valid">{{ interval }}</button>
+    </ul>
 </form>

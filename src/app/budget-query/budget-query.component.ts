@@ -12,33 +12,27 @@ import { formatDateToInput } from '../date-formatter';
   templateUrl: './budget-query.component.html',
   styleUrls: ['./budget-query.component.scss']
 })
-export class BudgetQueryComponent implements OnInit {
+export class BudgetQueryComponent {
 
   public intervals = [Interval.Weekly, Interval.Monthly, Interval.Yearly];
   
-  budgetQueryForm: FormGroup = new FormGroup({
+  public budgetQueryForm: FormGroup = new FormGroup({
     queryDate: new FormControl(''),
-    queryInterval: new FormControl(''),
   });
 
   constructor(private store: Store<BudgetEntryState>) { 
-    this.store.select(getQueryDate);
-  }
-
-  ngOnInit(): void {
     const initialQueryDate = new Date();
     const initialQueryInterval = Interval.Weekly;
     this.budgetQueryForm.get('queryDate')?.setValue(formatDateToInput(initialQueryDate));
     this.budgetQueryForm.get('queryInterval')?.setValue(initialQueryInterval);
   }
 
-  onSubmit() {
+  getData(queryInterval: Interval) {
     let queryDate  = new Date(this.budgetQueryForm.get('queryDate')?.value);
-    let queryInterval = this.budgetQueryForm.get('queryInterval')?.value;
-    
+
     this.store.dispatch(BudgetEntryActions.setQueryDate({ queryDate: queryDate}));
     this.store.dispatch(BudgetEntryActions.setQueryInterval({ queryInterval: queryInterval }));
-
+  
     this.store.dispatch(BudgetEntryActions.loadBudgetEntries());
     this.store.dispatch(BudgetEntryActions.loadTypeTotals());
   }

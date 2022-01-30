@@ -17,7 +17,7 @@ export class BudgetEntryEffects {
     loadBudgetEntries$ = createEffect(() => {
         return this.actions$
             .pipe(
-                ofType(BudgetEntryActions.loadBudgetEntries),
+                ofType(BudgetEntryActions.loadBudgetEntries, BudgetEntryActions.addBudgetEntrySuccess),
                 withLatestFrom(this.store.select(getQueryDate), this.store.select(getQueryInterval)),
                 switchMap(([action, queryDate, queryInterval]) => this.budgetEntryService.getBudgetEntries(queryDate, queryInterval) 
                         .pipe(

@@ -13,7 +13,6 @@ export const setQueryInterval = createAction(
 
 export const loadBudgetEntries = createAction(
     `[Budget Entry] Load Budget Entries`,
-    props<{ queryDate: Date, queryInterval: Interval }>(),
 );
 
 export const loadBudgetEntriesSuccess = createAction(
@@ -33,7 +32,6 @@ export const addBudgetEntrySuccess = createAction(
 
 export const loadTypeTotals = createAction(
     `[Budget Entry] Load Type Totals`,
-    props<{ queryDate: Date, queryInterval: Interval }>(),
 );
 
 export const loadTypeTotalsSuccess = createAction(

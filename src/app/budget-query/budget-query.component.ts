@@ -39,7 +39,7 @@ export class BudgetQueryComponent implements OnInit {
     this.store.dispatch(BudgetEntryActions.setQueryDate({ queryDate: queryDate}));
     this.store.dispatch(BudgetEntryActions.setQueryInterval({ queryInterval: queryInterval }));
 
-    this.store.dispatch(BudgetEntryActions.loadBudgetEntries({ queryDate: queryDate, queryInterval: queryInterval}));
-    this.store.dispatch(BudgetEntryActions.loadTypeTotals( { queryDate: queryDate, queryInterval: queryInterval}));
+    this.store.dispatch(BudgetEntryActions.loadBudgetEntries());
+    this.store.dispatch(BudgetEntryActions.loadTypeTotals());
   }
 }

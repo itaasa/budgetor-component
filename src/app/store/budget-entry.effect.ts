@@ -1,20 +1,25 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { map, mergeMap, switchMap, tap } from "rxjs";
+import { Store } from "@ngrx/store";
+import { map, switchMap, withLatestFrom } from "rxjs";
 import { BudgetEntryService } from "../budget-entry.service";
 import * as BudgetEntryActions from './budget-entry.actions';
+import { BudgetEntryState } from "./budget-entry.reducer";
+import { getQueryDate, getQueryInterval } from "./budget-entry.selectors";
 
 @Injectable()
 export class BudgetEntryEffects {
 
-    constructor(private actions$: Actions, private budgetEntryService: BudgetEntryService) {}
+    constructor(private store: Store<BudgetEntryState>, 
+                private actions$: Actions, 
+                private budgetEntryService: BudgetEntryService) {}
 
     loadBudgetEntries$ = createEffect(() => {
         return this.actions$
             .pipe(
                 ofType(BudgetEntryActions.loadBudgetEntries),
-                switchMap(action => 
-                    this.budgetEntryService.getBudgetEntries(action.queryDate, action.queryInterval)
+                withLatestFrom(this.store.select(getQueryDate), this.store.select(getQueryInterval)),
+                switchMap(([action, queryDate, queryInterval]) => this.budgetEntryService.getBudgetEntries(queryDate, queryInterval) 
                         .pipe(
                             map(budgetEntries => BudgetEntryActions.loadBudgetEntriesSuccess({ budgetEntries })),
                         )
@@ -26,8 +31,8 @@ export class BudgetEntryEffects {
         return this.actions$
             .pipe(
                 ofType(BudgetEntryActions.loadTypeTotals),
-                switchMap(action =>
-                        this.budgetEntryService.getTypeTotals(action.queryDate, action.queryInterval)
+                withLatestFrom(this.store.select(getQueryDate), this.store.select(getQueryInterval)),
+                switchMap(([action, queryDate, queryInterval]) => this.budgetEntryService.getTypeTotals(queryDate, queryInterval)
                         .pipe(
                                 map(typeTotals => BudgetEntryActions.loadTypeTotalsSuccess( { typeTotals })),
                             ),

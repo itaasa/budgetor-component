@@ -30,7 +30,7 @@ export class BudgetEntryEffects {
     loadTypeTotals$ = createEffect(() => {
         return this.actions$
             .pipe(
-                ofType(BudgetEntryActions.loadTypeTotals),
+                ofType(BudgetEntryActions.loadTypeTotals, BudgetEntryActions.addBudgetEntrySuccess),
                 withLatestFrom(this.store.select(getQueryDate), this.store.select(getQueryInterval)),
                 switchMap(([action, queryDate, queryInterval]) => this.budgetEntryService.getTypeTotals(queryDate, queryInterval)
                         .pipe(

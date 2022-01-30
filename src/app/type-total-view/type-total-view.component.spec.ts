@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TypeTotalComponent } from './type-total.component';
+import { TypeTotalViewComponent } from './type-total-view.component';
 
 describe('TypeTotalComponent', () => {
-  let component: TypeTotalComponent;
-  let fixture: ComponentFixture<TypeTotalComponent>;
+  let component: TypeTotalViewComponent;
+  let fixture: ComponentFixture<TypeTotalViewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TypeTotalComponent ]
+      declarations: [ TypeTotalViewComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TypeTotalComponent);
+    fixture = TestBed.createComponent(TypeTotalViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

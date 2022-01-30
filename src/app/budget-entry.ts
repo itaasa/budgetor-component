@@ -1,4 +1,5 @@
 export interface BudgetEntry {
+    _id?: string,
     itemName: string,
     price: number,
     dateBought: string,

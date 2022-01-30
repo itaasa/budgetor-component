@@ -10,8 +10,10 @@
 </form>
 
 <h2>Totals</h2>
-<div *ngFor="let typeTotal of typeTotals">
-    <app-type-total [typeTotal]="typeTotal"></app-type-total>
+<div *ngIf="typeTotals$ | async as typeTotals">
+    <div *ngFor="let typeTotal of typeTotals">
+        <app-type-total [typeTotal]="typeTotal"></app-type-total>
+    </div>
 </div>
 
 <h2>Budget Entries</h2>

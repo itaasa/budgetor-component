@@ -11,9 +11,10 @@ import { BudgetEntryComponent } from './budget-entry/budget-entry.component';
 import { TypeTotalComponent } from './type-total/type-total.component';
 import { BudgetQueryComponent } from './budget-query/budget-query.component';
 import { StoreModule } from '@ngrx/store';
-import { budgetEntryReducer } from './store/budget.reducer';
+import { budgetEntryReducer } from './store/budget-entry.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
-import { BudgetEntryEffects } from './store/budget.effect';
+import { BudgetEntryEffects } from './store/budget-entry.effect';
 
 @NgModule({
   declarations: [
@@ -30,9 +31,12 @@ import { BudgetEntryEffects } from './store/budget.effect';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({}),
-    StoreModule.forFeature('budgetEntries', budgetEntryReducer),
-    EffectsModule.forRoot([]),
+    StoreModule.forRoot({ budgetEntries: budgetEntryReducer }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      autoPause: true,
+    }),
+    EffectsModule.forRoot([BudgetEntryEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent]

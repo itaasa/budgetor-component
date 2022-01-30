@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
-import { BudgetEntry, BudgetType, Interval, TypeTotal } from "../budget-entry";
-import * as BudgetorActions from './budget.actions';
+import { BudgetEntry, Interval, TypeTotal } from "../budget-entry";
+import * as BudgetEntryActions from './budget-entry.actions';
 
 export interface BudgetEntryState {
     budgetEntries: BudgetEntry[];
@@ -18,10 +18,16 @@ const initialState: BudgetEntryState = {
 
 export const budgetEntryReducer = createReducer<BudgetEntryState>(
     initialState,
-    on(BudgetorActions.loadBudgetEntriesSuccess, (state, action): BudgetEntryState => {
+    on(BudgetEntryActions.loadBudgetEntriesSuccess, (state, action): BudgetEntryState => {
         return {
             ...state,
             budgetEntries: action.budgetEntries,
         };
+    }),
+    on(BudgetEntryActions.loadTypeTotalsSuccess, (state, action): BudgetEntryState => {
+        return {
+            ...state,
+            typeTotals: action.typeTotals,
+        }
     }),
 );

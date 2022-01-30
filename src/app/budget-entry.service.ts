@@ -17,13 +17,13 @@ export class BudgetEntryService {
   
   constructor(private http: HttpClient) { }
 
-  public getBudgetEntries(queryDate: string, interval: Interval): Observable<BudgetEntry[]> {
-    const url = this.apiUrl + `budget-entry?date=${queryDate}&interval=${interval}`;
+  public getBudgetEntries(queryDate: Date, interval: Interval): Observable<BudgetEntry[]> {
+    const url = this.apiUrl + `budget-entry?date=${queryDate.toISOString()}&interval=${interval}`;
     return this.http.get<BudgetEntry[]>(url);
   };
 
-  public getTypeTotals(queryDate: string, interval: Interval): Observable<TypeTotal[]> {
-    const url = this.apiUrl + `type-totals?date=${queryDate}&interval=${interval}`;
+  public getTypeTotals(queryDate: Date, interval: Interval): Observable<TypeTotal[]> {
+    const url = this.apiUrl + `type-totals?date=${queryDate.toISOString()}&interval=${interval}`;
     return this.http.get<TypeTotal[]>(url);
   }
 

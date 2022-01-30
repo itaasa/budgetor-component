@@ -17,3 +17,8 @@ export const getQueryDate = createSelector(
     getBudgetEntryState,
     state => state.queryDate,
 );
+
+export const getQueryInterval = createSelector(
+    getBudgetEntryState,
+    state => state.queryInterval,
+);

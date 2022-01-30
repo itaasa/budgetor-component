@@ -6,6 +6,11 @@ export const setQueryDate = createAction(
     props<{ queryDate: Date }>(),
 );
 
+export const setQueryInterval = createAction(
+    `[Budget Entry] Set Interval Date`,
+    props<{ queryInterval: Interval }>(),
+);
+
 export const loadBudgetEntries = createAction(
     `[Budget Entry] Load Budget Entries`,
     props<{ queryDate: Date, queryInterval: Interval }>(),

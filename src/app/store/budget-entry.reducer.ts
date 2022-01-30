@@ -36,4 +36,10 @@ export const budgetEntryReducer = createReducer<BudgetEntryState>(
             queryDate: action.queryDate,
         };
     }),
+    on(BudgetEntryActions.setQueryInterval, (state, action): BudgetEntryState => {
+        return {
+            ...state,
+            queryInterval: action.queryInterval,
+        };
+    }),
 );

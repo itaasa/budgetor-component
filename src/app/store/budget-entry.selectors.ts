@@ -13,3 +13,7 @@ export const getTypeTotals = createSelector(
     state => state.typeTotals,
 );
 
+export const getQueryDate = createSelector(
+    getBudgetEntryState,
+    state => state.queryDate,
+);

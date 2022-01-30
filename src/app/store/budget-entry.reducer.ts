@@ -30,4 +30,10 @@ export const budgetEntryReducer = createReducer<BudgetEntryState>(
             typeTotals: action.typeTotals,
         }
     }),
+    on(BudgetEntryActions.setQueryDate, (state, action): BudgetEntryState => {
+        return {
+            ...state,
+            queryDate: action.queryDate,
+        };
+    }),
 );

@@ -15,6 +15,7 @@ import { budgetEntryReducer } from './store/budget-entry.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { BudgetEntryEffects } from './store/budget-entry.effect';
+import { TypeTotalsComponent } from './type-totals/type-totals.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { BudgetEntryEffects } from './store/budget-entry.effect';
     AddBudgetEntryComponent,
     BudgetEntryViewComponent,
     TypeTotalViewComponent,
-    BudgetQueryComponent
+    BudgetQueryComponent,
+    TypeTotalsComponent
   ],
   imports: [
     BrowserModule,

@@ -13,10 +13,8 @@ import { getBudgetEntries, getTypeTotals } from '../store/budget-entry.selectors
 })
 export class BudgetEntriesComponent {
   public budgetEntries$: Observable<BudgetEntry[]>;
-  public typeTotals$: Observable<TypeTotal[]>;
 
   constructor(private store: Store<BudgetEntryState>) {
     this.budgetEntries$ = this.store.select(getBudgetEntries);
-    this.typeTotals$ = this.store.select(getTypeTotals);                
   }
 }

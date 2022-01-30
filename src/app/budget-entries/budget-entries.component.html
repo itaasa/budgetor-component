@@ -1,11 +1,5 @@
 <app-budget-query></app-budget-query>
-
-<h2>Totals</h2>
-<div *ngIf="typeTotals$ | async as typeTotals">
-    <div *ngFor="let typeTotal of typeTotals">
-        <app-type-total-view [typeTotal]="typeTotal"></app-type-total-view>
-    </div>
-</div>
+<app-type-totals></app-type-totals>
 
 <h2>Budget Entries</h2>
 <div *ngIf="budgetEntries$ | async as budgetEntries">

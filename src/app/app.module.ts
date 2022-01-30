@@ -25,7 +25,7 @@ import { TypeTotalsComponent } from './type-totals/type-totals.component';
     BudgetEntryViewComponent,
     TypeTotalViewComponent,
     BudgetQueryComponent,
-    TypeTotalsComponent
+    TypeTotalsComponent,
   ],
   imports: [
     BrowserModule,

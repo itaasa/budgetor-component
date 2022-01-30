@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { BudgetEntry, Interval, TypeTotal } from '../budget-entry';
+import { BudgetEntry } from '../budget-entry';
 import { BudgetEntryState } from '../store/budget-entry.reducer';
-import { getBudgetEntries, getTypeTotals } from '../store/budget-entry.selectors';
+import { getBudgetEntries } from '../store/budget-entry.selectors';
 
 @Component({
   selector: 'app-budget-entries',

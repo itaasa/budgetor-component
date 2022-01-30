@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { BudgetEntriesComponent } from './budget-entries/budget-entries.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddBudgetEntryComponent } from './add-budget-entry/add-budget-entry.component';
-import { BudgetEntryComponent } from './budget-entry/budget-entry.component';
+import { BudgetEntryViewComponent } from './budget-entry-view/budget-entry-view.component';
 import { TypeTotalViewComponent } from './type-total-view/type-total-view.component';
 import { BudgetQueryComponent } from './budget-query/budget-query.component';
 import { StoreModule } from '@ngrx/store';
@@ -21,7 +21,7 @@ import { BudgetEntryEffects } from './store/budget-entry.effect';
     AppComponent,
     BudgetEntriesComponent,
     AddBudgetEntryComponent,
-    BudgetEntryComponent,
+    BudgetEntryViewComponent,
     TypeTotalViewComponent,
     BudgetQueryComponent
   ],

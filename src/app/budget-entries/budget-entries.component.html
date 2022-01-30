@@ -10,7 +10,7 @@
 <h2>Budget Entries</h2>
 <div *ngIf="budgetEntries$ | async as budgetEntries">
     <div *ngFor="let budgetEntry of budgetEntries">
-        <app-budget-entry [budgetEntry]="budgetEntry"></app-budget-entry>
+        <app-budget-entry-view [budgetEntry]="budgetEntry"></app-budget-entry-view>
     </div>
 </div>
 

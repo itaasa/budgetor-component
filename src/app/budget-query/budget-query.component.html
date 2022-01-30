@@ -5,5 +5,5 @@
     <select id="query-interval" formControlName="queryInterval">
         <option *ngFor="let interval of intervals" [value]="interval">{{ interval }}</option>
     </select>
-    <button type="submit" [disabled]="!budgetQueryForm.valid">Get Data</button>
+    <button class="button" type="submit" [disabled]="!budgetQueryForm.valid">Get Data</button>
 </form>

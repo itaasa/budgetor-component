@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TypeTotalComponent } from './type-total.component';
+import { BudgetEntryViewComponent } from './budget-entry-view.component';
 
-describe('TypeTotalComponent', () => {
-  let component: TypeTotalComponent;
-  let fixture: ComponentFixture<TypeTotalComponent>;
+describe('BudgetEntryComponent', () => {
+  let component: BudgetEntryViewComponent;
+  let fixture: ComponentFixture<BudgetEntryViewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TypeTotalComponent ]
+      declarations: [ BudgetEntryViewComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TypeTotalComponent);
+    fixture = TestBed.createComponent(BudgetEntryViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

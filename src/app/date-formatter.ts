@@ -1,8 +1,3 @@
-export function formatDateForApi (queryDate: string): string {
-    const dateValues = queryDate.split('-');
-    return `${dateValues[1]}/${dateValues[2]}/${dateValues[0]}`;
-}
-
 export function formatDateToInput(date: Date): string {
     let year = date.getFullYear();
     let month = date.getMonth() + 1;

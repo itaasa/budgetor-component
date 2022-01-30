@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Store } from '@ngrx/store';
 
 import { BudgetEntry, BudgetType } from '../budget-entry'
-import { BudgetEntryService } from '../budget-entry.service';
 import { formatDateToInput } from '../date-formatter';
+import { BudgetEntryState } from '../store/budget-entry.reducer';
+import * as BudgetEntryActions from '../store/budget-entry.actions';
 
 @Component({
   selector: 'app-add-budget-entry',
@@ -21,7 +23,7 @@ export class AddBudgetEntryComponent implements OnInit {
     type: new FormControl(''),
   });
 
-  constructor(private budgetEntriesService: BudgetEntryService, private fb: FormBuilder) { }
+  constructor(private store: Store<BudgetEntryState>) {}
 
   ngOnInit(): void {
     this.budgetEntryForm.get('dateBought')?.setValue(formatDateToInput(new Date()));
@@ -43,8 +45,6 @@ export class AddBudgetEntryComponent implements OnInit {
       type: type
     }
 
-    this.budgetEntriesService.insertBudgetEntry(budgetEntry).subscribe((newBudgetEntry) => {
-      console.log(`Added new budget entry: ${newBudgetEntry}`);
-    })
+    this.store.dispatch(BudgetEntryActions.addBudgetEntry( { budgetEntry: budgetEntry } ));
   }
 }

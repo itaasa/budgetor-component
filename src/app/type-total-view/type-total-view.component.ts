@@ -2,14 +2,14 @@ import { Component, Input, OnInit } from '@angular/core';
 import { BudgetType, TypeTotal } from '../budget-entry';
 
 @Component({
-  selector: 'app-type-total',
-  templateUrl: './type-total.component.html',
-  styleUrls: ['./type-total.component.scss']
+  selector: 'app-type-total-view',
+  templateUrl: './type-total-view.component.html',
+  styleUrls: ['./type-total-view.component.scss']
 })
-export class TypeTotalComponent implements OnInit {
+export class TypeTotalViewComponent implements OnInit {
   @Input()
   typeTotal: TypeTotal = {
-    type: BudgetType.Gas,
+    type: BudgetType.Want,
     total: 0,
   }
 

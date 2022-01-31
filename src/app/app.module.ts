@@ -16,6 +16,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { BudgetEntryEffects } from './store/budget-entry.effect';
 import { TypeTotalsComponent } from './type-totals/type-totals.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { TypeTotalsComponent } from './type-totals/type-totals.component';
       autoPause: true,
     }),
     EffectsModule.forRoot([BudgetEntryEffects]),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

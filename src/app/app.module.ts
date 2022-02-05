@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-
+import { MatButtonModule } from '@angular/material/button';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BudgetEntriesComponent } from './budget-entries/budget-entries.component';
@@ -41,6 +46,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     }),
     EffectsModule.forRoot([BudgetEntryEffects]),
     BrowserAnimationsModule,
+    MatButtonModule,
+    MatGridListModule,
+    MatButtonToggleModule,
+    MatInputModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,10 @@
 <div *ngIf="typeTotals$ | async as typeTotals">
-    <div class="columns">
-        <div class="column is-one-fifth" *ngFor="let typeTotal of typeTotals">
+    <mat-grid-list cols="{{ typeTotals.length }}" rowHeight="2:1">
+        <mat-grid-tile 
+            [colspan]="1"
+            [rowspan]="1" 
+            *ngFor="let typeTotal of typeTotals">
             <app-type-total-view [typeTotal]="typeTotal"></app-type-total-view>
-        </div>
-    </div>
+        </mat-grid-tile>
+    </mat-grid-list>
 </div>

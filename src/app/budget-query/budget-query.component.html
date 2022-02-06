@@ -1,8 +1,11 @@
-<div class="p-5">
-    <form class="form columns" [formGroup]="budgetQueryForm">
-        <input class="input column is-one-fifth" id="query-date" type="date" formControlName="queryDate">
-        <ul *ngFor="let interval of intervals">
-            <button class="button column" (click)="getData(interval)" [disabled]="!budgetQueryForm.valid">{{ interval }}</button>
-        </ul>
-    </form>
-</div>
+
+<form action=""></form>
+<mat-form-field appearance="fill">
+    <mat-label>Query Date</mat-label>
+    <input matInput [ngModel]="queryDate" [matDatepicker]="picker" (dateInput)="addEvent($event)" (dateChange)="addEvent($event)">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+<mat-button-toggle-group *ngFor="let interval of intervals">
+    <mat-button-toggle color="primary" (click)="getData(interval)">{{ interval }}</mat-button-toggle>
+</mat-button-toggle-group>

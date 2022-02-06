@@ -13,6 +13,7 @@ import { getBudgetEntries } from '../store/budget-entry.selectors';
 })
 export class BudgetEntriesComponent {
   public budgetEntries$: Observable<BudgetEntry[]>;
+  public displayedColumns: string[] = ['itemName', 'price', 'type', 'edit', 'delete'];
 
   constructor(private store: Store<BudgetEntryState>) {
     this.budgetEntries$ = this.store.select(getBudgetEntries);

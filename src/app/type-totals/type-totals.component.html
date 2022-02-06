@@ -1,5 +1,5 @@
 <div *ngIf="typeTotals$ | async as typeTotals">
-    <mat-grid-list cols="6" rowHeight="2:1">
+    <mat-grid-list cols="{{ typeTotals.length }}" rowHeight="2:1">
         <mat-grid-tile 
             [colspan]="1"
             [rowspan]="1" 

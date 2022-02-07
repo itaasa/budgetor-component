@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 import { BudgetEntry } from '../budget-entry';
 import { BudgetEntryState } from '../store/budget-entry.reducer';
 import { getBudgetEntries } from '../store/budget-entry.selectors';
-import { AddBudgetEntryComponent } from '../add-budget-entry/add-budget-entry.component';
+import { EditBudgetEntryComponent } from '../edit-budget-entry/edit-budget-entry.component';
 
 @Component({
   selector: 'app-budget-entries',
@@ -22,8 +22,13 @@ export class BudgetEntriesComponent {
   }
 
   public openEditBudgetEntryDialog(budgetEntry : BudgetEntry) : void{
-    const dialogRef = this.dialog.open(AddBudgetEntryComponent, {
-      width: '250px'
+    const editBudgetEntryDialogRef = this.dialog.open(EditBudgetEntryComponent, {
+      width: '300px',
+      data: budgetEntry,
+    });
+
+    editBudgetEntryDialogRef.afterClosed().subscribe(updatedBudgetEntry => {
+      console.log(updatedBudgetEntry);
     });
   }
 }

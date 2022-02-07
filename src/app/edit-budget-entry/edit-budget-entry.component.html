@@ -1,0 +1,25 @@
+<form [formGroup]="budgetEntryForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+        <mat-label>Item Name</mat-label>
+        <input matInput type="text" id="item-name" formControlName="itemName">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Price</mat-label>
+        <input matInput type="number" step="0.01" id="price" formControlName="price">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Budget Type</mat-label>
+        <mat-select formControlName="type">
+            <mat-option *ngFor="let budgetType of budgetTypes" [value]="budgetType">{{ budgetType }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Date Bought</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dateBought">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <div mat-dialog-actions>
+        <button mat-raised-button color="primary" type="submit" [mat-dialog-close]="budgetEntry" [disabled]="!budgetEntryForm.valid">Save</button>
+    </div>
+</form>

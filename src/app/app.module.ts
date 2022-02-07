@@ -31,6 +31,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { BudgetEntryEffects } from './store/budget-entry.effect';
 import { TypeTotalsComponent } from './type-totals/type-totals.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EditBudgetEntryComponent } from './edit-budget-entry/edit-budget-entry.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TypeTotalViewComponent,
     BudgetQueryComponent,
     TypeTotalsComponent,
+    EditBudgetEntryComponent,
   ],
   imports: [
     BrowserModule,

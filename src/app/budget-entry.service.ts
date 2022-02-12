@@ -38,7 +38,7 @@ export class BudgetEntryService {
   }
 
   public deleteBudgetEntry(budgetEntry: BudgetEntry) : Observable<BudgetEntry> {
-    const url = `${this.apiUrl}/budget-entry/${budgetEntry.id}`;
+    const url = `${this.apiUrl}budget-entry/${budgetEntry.id}`;
     return this.http.delete<BudgetEntry>(url, this.httpOptions);
   }
 }

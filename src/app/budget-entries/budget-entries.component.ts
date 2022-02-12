@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { BudgetEntry } from '../budget-entry';
 import { BudgetEntryState } from '../store/budget-entry.reducer';
 import { getBudgetEntries } from '../store/budget-entry.selectors';
+import * as BudgetEntryActions from '../store/budget-entry.actions';
 import { EditBudgetEntryComponent } from '../edit-budget-entry/edit-budget-entry.component';
 
 @Component({
@@ -21,14 +22,20 @@ export class BudgetEntriesComponent {
     this.budgetEntries$ = this.store.select(getBudgetEntries);
   }
 
-  public openEditBudgetEntryDialog(budgetEntry : BudgetEntry) : void{
+  public openEditBudgetEntryDialog(budgetEntry : any) : void{
     const editBudgetEntryDialogRef = this.dialog.open(EditBudgetEntryComponent, {
       width: '300px',
-      data: budgetEntry,
+      data: {
+        id: budgetEntry._id,
+        itemName: budgetEntry.itemName,
+        price: budgetEntry.price,
+        type: budgetEntry.type,
+        dateBought: budgetEntry.dateBought,
+      }
     });
 
     editBudgetEntryDialogRef.afterClosed().subscribe(updatedBudgetEntry => {
-      console.log(updatedBudgetEntry);
+        // this.store.dispatch(BudgetEntryActions.updateBudgetEntry({ budgetEntry: updatedBudgetEntry }));
     });
   }
 }

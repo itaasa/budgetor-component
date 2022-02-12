@@ -17,7 +17,7 @@ export class BudgetEntryEffects {
     loadBudgetEntries$ = createEffect(() => {
         return this.actions$
             .pipe(
-                ofType(BudgetEntryActions.loadBudgetEntries, BudgetEntryActions.addBudgetEntrySuccess),
+                ofType(BudgetEntryActions.loadBudgetEntries, BudgetEntryActions.addBudgetEntrySuccess, BudgetEntryActions.updateBudgetEntrySuccess),
                 withLatestFrom(this.store.select(getQueryDate), this.store.select(getQueryInterval)),
                 switchMap(([action, queryDate, queryInterval]) => this.budgetEntryService.getBudgetEntries(queryDate, queryInterval) 
                         .pipe(
@@ -30,7 +30,7 @@ export class BudgetEntryEffects {
     loadTypeTotals$ = createEffect(() => {
         return this.actions$
             .pipe(
-                ofType(BudgetEntryActions.loadTypeTotals, BudgetEntryActions.addBudgetEntrySuccess),
+                ofType(BudgetEntryActions.loadTypeTotals, BudgetEntryActions.addBudgetEntrySuccess, BudgetEntryActions.updateBudgetEntrySuccess),
                 withLatestFrom(this.store.select(getQueryDate), this.store.select(getQueryInterval)),
                 switchMap(([action, queryDate, queryInterval]) => this.budgetEntryService.getTypeTotals(queryDate, queryInterval)
                         .pipe(
@@ -51,5 +51,17 @@ export class BudgetEntryEffects {
                         ),
                     )
             );
+    });
+
+    editBudgetEntry$ = createEffect(() => {
+        return this.actions$
+            .pipe(
+                ofType(BudgetEntryActions.updateBudgetEntry),
+                switchMap(action => 
+                    this.budgetEntryService.updateBudgetEntry(action.budgetEntry)
+                    .pipe(
+                        map(budgetEntry => BudgetEntryActions.updateBudgetEntrySuccess( { budgetEntry })),
+                    ),
+            ));
     });
 }

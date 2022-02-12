@@ -1,7 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
 import { BudgetEntry, BudgetType } from '../budget-entry';
+import * as BudgetEntryActions from '../store/budget-entry.actions';
 
 @Component({
   selector: 'app-edit-budget-entry',
@@ -19,9 +21,9 @@ export class EditBudgetEntryComponent implements OnInit{
   public budgetTypes = [BudgetType.Want, BudgetType.Need, BudgetType.Gas, BudgetType.Emergency, BudgetType.Groceries, BudgetType.Holiday];
   public budgetEntry: BudgetEntry;
 
-  public constructor(public dialogRef: MatDialogRef<EditBudgetEntryComponent>, @Inject(MAT_DIALOG_DATA) public data: BudgetEntry){
+  public constructor(public dialogRef: MatDialogRef<EditBudgetEntryComponent>, @Inject(MAT_DIALOG_DATA) public data: BudgetEntry, private store: Store){
     this.budgetEntry = {
-      _id: data._id,
+      id: data.id,
       itemName: data.itemName,
       price: data.price,
       type: data.type,
@@ -41,5 +43,7 @@ export class EditBudgetEntryComponent implements OnInit{
     this.budgetEntry.price = this.budgetEntryForm.get('price')?.value;
     this.budgetEntry.type = this.budgetEntryForm.get('type')?.value;
     this.budgetEntry.dateBought = this.budgetEntryForm.get('dateBought')?.value.toISOString();
+
+    this.store.dispatch(BudgetEntryActions.updateBudgetEntry({ budgetEntry: this.budgetEntry }));
   }
 }

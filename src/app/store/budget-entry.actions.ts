@@ -30,6 +30,16 @@ export const addBudgetEntrySuccess = createAction(
     props<{ budgetEntry: BudgetEntry }>(),
 );
 
+export const updateBudgetEntry = createAction(
+    `[Budget Entry] Update Budget Entry`,
+    props<{ budgetEntry: BudgetEntry }>(),
+);
+
+export const updateBudgetEntrySuccess = createAction(
+    `[Budget Entry] Update Budget Entry Success`,
+    props<{ budgetEntry: BudgetEntry }>(),
+);
+
 export const loadTypeTotals = createAction(
     `[Budget Entry] Load Type Totals`,
 );

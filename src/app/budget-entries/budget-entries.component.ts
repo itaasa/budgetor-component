@@ -8,6 +8,7 @@ import { BudgetEntryState } from '../store/budget-entry.reducer';
 import { getBudgetEntries } from '../store/budget-entry.selectors';
 import * as BudgetEntryActions from '../store/budget-entry.actions';
 import { EditBudgetEntryComponent } from '../edit-budget-entry/edit-budget-entry.component';
+import { DeleteBudgetEntryComponent } from '../delete-budget-entry/delete-budget-entry.component';
 
 @Component({
   selector: 'app-budget-entries',
@@ -23,7 +24,7 @@ export class BudgetEntriesComponent {
   }
 
   public openEditBudgetEntryDialog(budgetEntry : any) : void{
-    const editBudgetEntryDialogRef = this.dialog.open(EditBudgetEntryComponent, {
+    this.dialog.open(EditBudgetEntryComponent, {
       width: '300px',
       data: {
         id: budgetEntry._id,
@@ -33,9 +34,18 @@ export class BudgetEntriesComponent {
         dateBought: budgetEntry.dateBought,
       }
     });
+  }
 
-    editBudgetEntryDialogRef.afterClosed().subscribe(updatedBudgetEntry => {
-        // this.store.dispatch(BudgetEntryActions.updateBudgetEntry({ budgetEntry: updatedBudgetEntry }));
+  public openDeleteBudgetEntryDialog(budgetEntry: any) : void {
+    this.dialog.open(DeleteBudgetEntryComponent, {
+      width: '300px',
+      data: {
+        id: budgetEntry._id,
+        itemName: budgetEntry.itemName,
+        price: budgetEntry.price,
+        type: budgetEntry.type,
+        dateBought: budgetEntry.dateBought,
+      }
     });
   }
 }

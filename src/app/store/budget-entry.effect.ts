@@ -17,7 +17,7 @@ export class BudgetEntryEffects {
     loadBudgetEntries$ = createEffect(() => {
         return this.actions$
             .pipe(
-                ofType(BudgetEntryActions.loadBudgetEntries, BudgetEntryActions.addBudgetEntrySuccess, BudgetEntryActions.updateBudgetEntrySuccess),
+                ofType(BudgetEntryActions.loadBudgetEntries, BudgetEntryActions.addBudgetEntrySuccess, BudgetEntryActions.updateBudgetEntrySuccess, BudgetEntryActions.deleteBudgetEntrySuccess),
                 withLatestFrom(this.store.select(getQueryDate), this.store.select(getQueryInterval)),
                 switchMap(([action, queryDate, queryInterval]) => this.budgetEntryService.getBudgetEntries(queryDate, queryInterval) 
                         .pipe(
@@ -30,7 +30,7 @@ export class BudgetEntryEffects {
     loadTypeTotals$ = createEffect(() => {
         return this.actions$
             .pipe(
-                ofType(BudgetEntryActions.loadTypeTotals, BudgetEntryActions.addBudgetEntrySuccess, BudgetEntryActions.updateBudgetEntrySuccess),
+                ofType(BudgetEntryActions.loadTypeTotals, BudgetEntryActions.addBudgetEntrySuccess, BudgetEntryActions.updateBudgetEntrySuccess, BudgetEntryActions.deleteBudgetEntrySuccess),
                 withLatestFrom(this.store.select(getQueryDate), this.store.select(getQueryInterval)),
                 switchMap(([action, queryDate, queryInterval]) => this.budgetEntryService.getTypeTotals(queryDate, queryInterval)
                         .pipe(
@@ -61,6 +61,18 @@ export class BudgetEntryEffects {
                     this.budgetEntryService.updateBudgetEntry(action.budgetEntry)
                     .pipe(
                         map(budgetEntry => BudgetEntryActions.updateBudgetEntrySuccess( { budgetEntry })),
+                    ),
+            ));
+    });
+
+    deleteBudgetEntry$ = createEffect(() => {
+        return this.actions$
+            .pipe(
+                ofType(BudgetEntryActions.deleteBudgetEntry),
+                switchMap(action => 
+                    this.budgetEntryService.deleteBudgetEntry(action.budgetEntry)
+                    .pipe(
+                        map(budgetEntry => BudgetEntryActions.deleteBudgetEntrySuccess( { budgetEntry })),
                     ),
             ));
     });

@@ -40,6 +40,16 @@ export const updateBudgetEntrySuccess = createAction(
     props<{ budgetEntry: BudgetEntry }>(),
 );
 
+export const deleteBudgetEntry = createAction(
+    `[Budget Entry] Delete Budget Entry`,
+    props<{ budgetEntry: BudgetEntry }>(),
+);
+
+export const deleteBudgetEntrySuccess = createAction(
+    `[Budget Entry] Delete Budget Entry Success`,
+    props<{ budgetEntry: BudgetEntry }>(),
+);
+
 export const loadTypeTotals = createAction(
     `[Budget Entry] Load Type Totals`,
 );

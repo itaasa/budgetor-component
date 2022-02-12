@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import { BudgetEntry, Interval, TypeTotal } from './budget-entry';
 
@@ -35,5 +35,10 @@ export class BudgetEntryService {
   public updateBudgetEntry(budgetEntry: BudgetEntry) : Observable<BudgetEntry> {
     const url = this.apiUrl + `budget-entry`;
     return this.http.put<BudgetEntry>(url, budgetEntry, this.httpOptions);
+  }
+
+  public deleteBudgetEntry(budgetEntry: BudgetEntry) : Observable<BudgetEntry> {
+    const url = `${this.apiUrl}/budget-entry/${budgetEntry.id}`;
+    return this.http.delete<BudgetEntry>(url, this.httpOptions);
   }
 }

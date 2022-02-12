@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
 
 import { BudgetEntry } from '../budget-entry';
 import { BudgetEntryState } from '../store/budget-entry.reducer';
 import { getBudgetEntries } from '../store/budget-entry.selectors';
+import * as BudgetEntryActions from '../store/budget-entry.actions';
+import { EditBudgetEntryComponent } from '../edit-budget-entry/edit-budget-entry.component';
 
 @Component({
   selector: 'app-budget-entries',
@@ -15,7 +18,24 @@ export class BudgetEntriesComponent {
   public budgetEntries$: Observable<BudgetEntry[]>;
   public displayedColumns: string[] = ['itemName', 'price', 'type', 'edit', 'delete'];
 
-  constructor(private store: Store<BudgetEntryState>) {
+  constructor(private store: Store<BudgetEntryState>, private dialog: MatDialog) {
     this.budgetEntries$ = this.store.select(getBudgetEntries);
+  }
+
+  public openEditBudgetEntryDialog(budgetEntry : any) : void{
+    const editBudgetEntryDialogRef = this.dialog.open(EditBudgetEntryComponent, {
+      width: '300px',
+      data: {
+        id: budgetEntry._id,
+        itemName: budgetEntry.itemName,
+        price: budgetEntry.price,
+        type: budgetEntry.type,
+        dateBought: budgetEntry.dateBought,
+      }
+    });
+
+    editBudgetEntryDialogRef.afterClosed().subscribe(updatedBudgetEntry => {
+        // this.store.dispatch(BudgetEntryActions.updateBudgetEntry({ budgetEntry: updatedBudgetEntry }));
+    });
   }
 }

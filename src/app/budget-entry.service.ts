@@ -31,4 +31,9 @@ export class BudgetEntryService {
     const url = this.apiUrl + `budget-entry`;
     return this.http.post<BudgetEntry>(url, budgetEntry, this.httpOptions);
   }
+
+  public updateBudgetEntry(budgetEntry: BudgetEntry) : Observable<BudgetEntry> {
+    const url = this.apiUrl + `budget-entry`;
+    return this.http.put<BudgetEntry>(url, budgetEntry, this.httpOptions);
+  }
 }

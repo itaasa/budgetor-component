@@ -3,7 +3,6 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
 import { BudgetEntry, BudgetType } from '../budget-entry'
-import { formatDateToInput } from '../date-formatter';
 import { BudgetEntryState } from '../store/budget-entry.reducer';
 import * as BudgetEntryActions from '../store/budget-entry.actions';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { filter, map, Observable } from 'rxjs';
 import { TypeTotalViewModel } from '../budget-entry';
 import { BudgetEntryState } from '../store/budget-entry.reducer';
 import { getTypeTotalViewModels } from '../store/budget-entry.selectors';
@@ -15,7 +15,9 @@ export class TypeTotalsComponent implements OnInit {
   public typeTotalViewModels$: Observable<TypeTotalViewModel[]>;
 
   constructor(private store: Store<BudgetEntryState>) {
-    this.typeTotalViewModels$ = this.store.select(getTypeTotalViewModels);  
+    this.typeTotalViewModels$ = this.store.select(getTypeTotalViewModels).pipe(
+        map(typeTotalViewModels => typeTotalViewModels.filter((typeTotalViewModel: TypeTotalViewModel) => typeTotalViewModel.total))
+      );
   }
 
   ngOnInit(): void {

@@ -27,20 +27,7 @@ export class BudgetEntryEffects {
                     ),
             );
     });
-
-    loadTypeTotals$ = createEffect(() => {
-        return this.actions$
-            .pipe(
-                ofType(BudgetEntryActions.loadTypeTotals, BudgetEntryActions.addBudgetEntrySuccess, BudgetEntryActions.updateBudgetEntrySuccess, BudgetEntryActions.deleteBudgetEntrySuccess),
-                withLatestFrom(this.store.select(getQueryDate), this.store.select(getQueryInterval)),
-                switchMap(([action, queryDate, queryInterval]) => this.budgetEntryService.getTypeTotals(queryDate, queryInterval)
-                        .pipe(
-                                map(typeTotals => BudgetEntryActions.loadTypeTotalsSuccess( { typeTotals })),
-                            ),
-                    ),
-            );
-    });
-
+    
     loadTypeTotalViewModels$ = createEffect(() => {
         return this.actions$
             .pipe(

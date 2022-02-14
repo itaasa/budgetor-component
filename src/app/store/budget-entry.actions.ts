@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { BudgetEntry, Interval, TypeTotal, TypeTotalViewModel } from '../budget-entry';
+import { BudgetEntry, Interval, TypeTotalViewModel } from '../budget-entry';
 
 export const setQueryDate = createAction(
     `[Budget Entry] Set Query Date`,
@@ -48,15 +48,6 @@ export const deleteBudgetEntry = createAction(
 export const deleteBudgetEntrySuccess = createAction(
     `[Budget Entry] Delete Budget Entry Success`,
     props<{ budgetEntry: BudgetEntry }>(),
-);
-
-export const loadTypeTotals = createAction(
-    `[Budget Entry] Load Type Totals`,
-);
-
-export const loadTypeTotalsSuccess = createAction(
-    `[Budget Entry] Load Type Totals Success`,
-    props<{ typeTotals: TypeTotal[] }>(),
 );
 
 export const loadTypeTotalViewModels = createAction(

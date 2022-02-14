@@ -28,7 +28,6 @@ export class BudgetQueryComponent {
     this.store.dispatch(BudgetEntryActions.setQueryInterval({ queryInterval: queryInterval }));
   
     this.store.dispatch(BudgetEntryActions.loadBudgetEntries());
-    this.store.dispatch(BudgetEntryActions.loadTypeTotals());
     this.store.dispatch(BudgetEntryActions.loadTypeTotalViewModels());
   }
 }

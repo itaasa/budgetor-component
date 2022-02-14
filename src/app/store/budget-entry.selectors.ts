@@ -8,11 +8,6 @@ export const getBudgetEntries = createSelector(
     state => state.budgetEntries,
 );
 
-export const getTypeTotals = createSelector(
-    getBudgetEntryState,
-    state => state.typeTotals,
-);
-
 export const getTypeTotalViewModels = createSelector(
     getBudgetEntryState,
     state => state.typeTotalViewModels,

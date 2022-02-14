@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { BudgetType, TypeTotal, TypeTotalViewModel } from '../budget-entry';
+import { BudgetType, TypeTotalViewModel } from '../budget-entry';
 
 @Component({
   selector: 'app-type-total-view',

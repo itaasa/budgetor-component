@@ -22,11 +22,6 @@ export enum Interval {
     All = 'All',
 };
 
-export interface TypeTotal {
-    type: BudgetType,
-    total: number,
-};
-
 export interface TypeTotalViewModel {
     type: BudgetType,
     total: number,

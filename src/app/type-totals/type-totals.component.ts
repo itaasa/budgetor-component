@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { TypeTotal, TypeTotalViewModel } from '../budget-entry';
+import { TypeTotalViewModel } from '../budget-entry';
 import { BudgetEntryState } from '../store/budget-entry.reducer';
-import { getTypeTotals, getTypeTotalViewModels } from '../store/budget-entry.selectors';
+import { getTypeTotalViewModels } from '../store/budget-entry.selectors';
 
 @Component({
   selector: 'app-type-totals',

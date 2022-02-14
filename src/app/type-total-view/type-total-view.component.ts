@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { BudgetType, TypeTotal } from '../budget-entry';
+import { BudgetType, TypeTotal, TypeTotalViewModel } from '../budget-entry';
 
 @Component({
   selector: 'app-type-total-view',
@@ -8,9 +8,10 @@ import { BudgetType, TypeTotal } from '../budget-entry';
 })
 export class TypeTotalViewComponent implements OnInit {
   @Input()
-  typeTotal: TypeTotal = {
+  typeTotal: TypeTotalViewModel = {
     type: BudgetType.Want,
     total: 0,
+    maxTotal: 0,
   }
 
   constructor() { }

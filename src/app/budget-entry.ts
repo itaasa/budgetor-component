@@ -26,3 +26,9 @@ export interface TypeTotal {
     type: BudgetType,
     total: number,
 };
+
+export interface TypeTotalViewModel {
+    type: BudgetType,
+    total: number,
+    maxTotal?: number,
+};

@@ -1,3 +1,4 @@
+import { query } from "@angular/animations";
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
@@ -37,6 +38,19 @@ export class BudgetEntryEffects {
                                 map(typeTotals => BudgetEntryActions.loadTypeTotalsSuccess( { typeTotals })),
                             ),
                     ),
+            );
+    });
+
+    loadTypeTotalViewModels$ = createEffect(() => {
+        return this.actions$
+            .pipe(
+                ofType(BudgetEntryActions.loadTypeTotalViewModels, BudgetEntryActions.addBudgetEntrySuccess, BudgetEntryActions.updateBudgetEntrySuccess, BudgetEntryActions.deleteBudgetEntrySuccess),
+                withLatestFrom(this.store.select(getQueryDate), this.store.select(getQueryInterval)),
+                switchMap(([action, queryDate, queryInterval]) => this.budgetEntryService.getTypeTotalsViewModels(queryDate, queryInterval)
+                    .pipe(
+                        map(typeTotalViewModels => BudgetEntryActions.loadTypeTotalViewModelsSuccess( { typeTotalViewModels } )),
+                    ),
+                ),
             );
     });
 

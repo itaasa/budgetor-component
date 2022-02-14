@@ -27,6 +27,11 @@ export class BudgetEntryService {
     return this.http.get<TypeTotal[]>(url);
   }
 
+  public getTypeTotalsViewModels(queryDate: Date, interval: Interval): Observable<TypeTotal[]> {
+    const url = this.apiUrl + `type-totals-max?date=${queryDate.toISOString()}&interval=${interval}`;
+    return this.http.get<TypeTotal[]>(url);
+  }
+
   public insertBudgetEntry(budgetEntry: BudgetEntry) : Observable<BudgetEntry> {
     const url = this.apiUrl + `budget-entry`;
     return this.http.post<BudgetEntry>(url, budgetEntry, this.httpOptions);

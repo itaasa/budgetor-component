@@ -8,9 +8,9 @@ export const getBudgetEntries = createSelector(
     state => state.budgetEntries,
 );
 
-export const getTypeTotals = createSelector(
+export const getTypeTotalViewModels = createSelector(
     getBudgetEntryState,
-    state => state.typeTotals,
+    state => state.typeTotalViewModels,
 );
 
 export const getQueryDate = createSelector(

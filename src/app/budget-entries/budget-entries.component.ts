@@ -13,39 +13,48 @@ import { DeleteBudgetEntryComponent } from '../delete-budget-entry/delete-budget
 @Component({
   selector: 'app-budget-entries',
   templateUrl: './budget-entries.component.html',
-  styleUrls: ['./budget-entries.component.scss']
+  styleUrls: ['./budget-entries.component.scss'],
 })
 export class BudgetEntriesComponent {
   public budgetEntries$: Observable<BudgetEntry[]>;
-  public displayedColumns: string[] = ['itemName', 'price', 'type', 'edit', 'delete'];
+  public displayedColumns: string[] = [
+    'itemName',
+    'price',
+    'type',
+    'edit',
+    'delete',
+  ];
 
-  constructor(private store: Store<BudgetEntryState>, private dialog: MatDialog) {
+  constructor(
+    private store: Store<BudgetEntryState>,
+    private dialog: MatDialog
+  ) {
     this.budgetEntries$ = this.store.select(getBudgetEntries);
   }
 
-  public openEditBudgetEntryDialog(budgetEntry : any) : void{
+  public openEditBudgetEntryDialog(budgetEntry: any): void {
     this.dialog.open(EditBudgetEntryComponent, {
       width: '300px',
       data: {
-        id: budgetEntry._id,
+        _id: budgetEntry._id,
         itemName: budgetEntry.itemName,
         price: budgetEntry.price,
         type: budgetEntry.type,
         dateBought: budgetEntry.dateBought,
-      }
+      },
     });
   }
 
-  public openDeleteBudgetEntryDialog(budgetEntry: any) : void {
+  public openDeleteBudgetEntryDialog(budgetEntry: any): void {
     this.dialog.open(DeleteBudgetEntryComponent, {
       width: '300px',
       data: {
-        id: budgetEntry._id,
+        _id: budgetEntry._id,
         itemName: budgetEntry.itemName,
         price: budgetEntry.price,
         type: budgetEntry.type,
         dateBought: budgetEntry.dateBought,
-      }
+      },
     });
   }
 }

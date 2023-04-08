@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
-import { BudgetEntry, BudgetType } from '../budget-entry'
+import { BudgetEntry, BudgetType } from '../budget-entry';
 import { BudgetEntryState } from '../store/budget-entry.reducer';
 import * as BudgetEntryActions from '../store/budget-entry.actions';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
@@ -10,11 +10,19 @@ import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 @Component({
   selector: 'app-add-budget-entry',
   templateUrl: './add-budget-entry.component.html',
-  styleUrls: ['./add-budget-entry.component.scss']
+  styleUrls: ['./add-budget-entry.component.scss'],
 })
 export class AddBudgetEntryComponent implements OnInit {
-
-  public budgetTypes = [BudgetType.Want, BudgetType.Need, BudgetType.Gas, BudgetType.Emergency, BudgetType.Groceries, BudgetType.Holiday];
+  public budgetTypes = [
+    BudgetType.Want,
+    BudgetType.Need,
+    BudgetType.Gas,
+    BudgetType.Emergency,
+    BudgetType.Groceries,
+    BudgetType.Holiday,
+    BudgetType.CarMaintenance,
+    BudgetType.WishList,
+  ];
 
   budgetEntryForm: FormGroup = new FormGroup({
     itemName: new FormControl(''),
@@ -23,8 +31,7 @@ export class AddBudgetEntryComponent implements OnInit {
     type: new FormControl(''),
   });
 
-  constructor(private store: Store<BudgetEntryState>) {
-  }
+  constructor(private store: Store<BudgetEntryState>) {}
 
   ngOnInit(): void {
     this.budgetEntryForm.get('dateBought')?.setValue(new Date());
@@ -32,22 +39,23 @@ export class AddBudgetEntryComponent implements OnInit {
     this.budgetEntryForm.get('price')?.setValue('0.00');
   }
 
-  addEvent(event: MatDatepickerInputEvent<Date>){
-  }
+  addEvent(event: MatDatepickerInputEvent<Date>) {}
 
   onSubmit(): void {
     let itemName = this.budgetEntryForm.get('itemName')?.value;
     let price = this.budgetEntryForm.get('price')?.value;
     let type = this.budgetEntryForm.get('type')?.value;
     let dateBought = this.budgetEntryForm.get('dateBought')?.value;
-    
+
     let budgetEntry: BudgetEntry = {
       itemName: itemName,
       price: price,
       dateBought: dateBought.toISOString(),
-      type: type
-    }
+      type: type,
+    };
 
-    this.store.dispatch(BudgetEntryActions.addBudgetEntry( { budgetEntry: budgetEntry } ));
+    this.store.dispatch(
+      BudgetEntryActions.addBudgetEntry({ budgetEntry: budgetEntry })
+    );
   }
 }

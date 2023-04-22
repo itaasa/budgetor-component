@@ -65,10 +65,10 @@ export const loadTypeTotalViewModelsSuccess = createAction(
 );
 
 export const loadIntervalTotal = createAction(
-  `[Budget Entry] Load Interval Totals`
+  `[Budget Entry] Load Interval Total`
 );
 
 export const loadIntervalTotalSuccess = createAction(
-  `[Budget Entry] Load Interval Totals Success`,
+  `[Budget Entry] Load Interval Total Success`,
   props<{ intervalTotal: IntervalTotal }>()
 );

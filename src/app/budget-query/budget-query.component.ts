@@ -8,10 +8,9 @@ import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 @Component({
   selector: 'app-budget-query',
   templateUrl: './budget-query.component.html',
-  styleUrls: ['./budget-query.component.scss']
+  styleUrls: ['./budget-query.component.scss'],
 })
 export class BudgetQueryComponent {
-
   public intervals = [Interval.Weekly, Interval.Monthly, Interval.Yearly];
   public queryDate: Date;
 
@@ -19,15 +18,20 @@ export class BudgetQueryComponent {
     this.queryDate = new Date();
   }
 
-  addEvent(event: MatDatepickerInputEvent<Date>){
+  addEvent(event: MatDatepickerInputEvent<Date>) {
     this.queryDate = event.value as Date;
   }
 
   getData(queryInterval: Interval) {
-    this.store.dispatch(BudgetEntryActions.setQueryDate({ queryDate: this.queryDate}));
-    this.store.dispatch(BudgetEntryActions.setQueryInterval({ queryInterval: queryInterval }));
-  
+    this.store.dispatch(
+      BudgetEntryActions.setQueryDate({ queryDate: this.queryDate })
+    );
+    this.store.dispatch(
+      BudgetEntryActions.setQueryInterval({ queryInterval: queryInterval })
+    );
+
     this.store.dispatch(BudgetEntryActions.loadBudgetEntries());
     this.store.dispatch(BudgetEntryActions.loadTypeTotalViewModels());
+    this.store.dispatch(BudgetEntryActions.loadIntervalTotal());
   }
 }

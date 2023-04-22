@@ -29,3 +29,11 @@ export interface TypeTotalViewModel {
   total: number;
   maxTotal?: number;
 }
+
+export interface IntervalTotal {
+  interval: Interval;
+  spent: number;
+  budget: number;
+  net: number;
+  date: string;
+}

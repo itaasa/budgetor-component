@@ -2,7 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
-import { BudgetEntry, Interval, TypeTotalViewModel } from './budget-entry';
+import {
+  BudgetEntry,
+  Interval,
+  IntervalTotal,
+  TypeTotalViewModel,
+} from './budget-entry';
 
 @Injectable({
   providedIn: 'root',
@@ -34,6 +39,16 @@ export class BudgetEntryService {
       this.apiUrl +
       `type-total?date=${queryDate.toISOString()}&interval=${interval}`;
     return this.http.get<TypeTotalViewModel[]>(url);
+  }
+
+  public getIntervalTotal(
+    queryDate: Date,
+    interval: Interval
+  ): Observable<IntervalTotal> {
+    const url =
+      this.apiUrl +
+      `interval-total?date=${queryDate.toISOString()}&interval=${interval}`;
+    return this.http.get<IntervalTotal>(url);
   }
 
   public insertBudgetEntry(budgetEntry: BudgetEntry): Observable<BudgetEntry> {

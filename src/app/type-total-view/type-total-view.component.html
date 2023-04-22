@@ -1,4 +1,7 @@
-<mat-card>
-    <mat-card-title>{{ typeTotal.type }}</mat-card-title>
-    <mat-card-subtitle>{{ typeTotal.total | currency }} / {{ typeTotal.maxTotal | currency }}</mat-card-subtitle>
+<mat-card class="type-total-view">
+  <mat-card-title>{{ typeTotal.type }}</mat-card-title>
+  <mat-card-subtitle
+    >{{ typeTotal.total | currency }} /
+    {{ typeTotal.maxTotal | currency }}</mat-card-subtitle
+  >
 </mat-card>

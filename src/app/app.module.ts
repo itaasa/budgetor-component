@@ -33,6 +33,7 @@ import { TypeTotalsComponent } from './type-totals/type-totals.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditBudgetEntryComponent } from './edit-budget-entry/edit-budget-entry.component';
 import { DeleteBudgetEntryComponent } from './delete-budget-entry/delete-budget-entry.component';
+import { IntervalTotalComponent } from './interval-total/interval-total.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { DeleteBudgetEntryComponent } from './delete-budget-entry/delete-budget-
     TypeTotalsComponent,
     EditBudgetEntryComponent,
     DeleteBudgetEntryComponent,
+    IntervalTotalComponent,
   ],
   imports: [
     BrowserModule,

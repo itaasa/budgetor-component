@@ -1,9 +1,21 @@
 <div *ngIf="intervalTotal$ | async as intervalTotal">
-  <h1>
+  <h2>
     Your {{ intervalTotal.interval }} stats as of
-    {{ intervalTotal.date | date }}
-  </h1>
-  <h2>Spent: {{ intervalTotal.spent | currency }}</h2>
-  <h2>Budget Max: {{ intervalTotal.budget | currency }}</h2>
-  <h2>Net: {{ intervalTotal.net | currency }}</h2>
+    {{ queryDate$ | async | date }}
+  </h2>
+  <mat-card>
+    <mat-card-title>SPENT</mat-card-title>
+    <mat-card-subtitle>{{ intervalTotal.spent | currency }}</mat-card-subtitle>
+  </mat-card>
+  <mat-card>
+    <mat-card-title>MAX</mat-card-title>
+    <mat-card-subtitle>{{ intervalTotal.budget | currency }}</mat-card-subtitle>
+  </mat-card>
+  <mat-card>
+    <mat-card-title>NET</mat-card-title>
+    <mat-card-subtitle
+      [style.color]="intervalTotal.net < 0 ? 'red' : 'green'"
+      >{{ intervalTotal.net | currency }}</mat-card-subtitle
+    >
+  </mat-card>
 </div>

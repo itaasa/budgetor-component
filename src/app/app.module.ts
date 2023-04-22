@@ -15,6 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -75,8 +76,9 @@ import { IntervalTotalComponent } from './interval-total/interval-total.componen
     MatSelectModule,
     MatIconModule,
     MatDialogModule,
+    MatProgressBarModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

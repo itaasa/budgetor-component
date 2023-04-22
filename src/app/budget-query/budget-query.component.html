@@ -1,18 +1,19 @@
-<form action=""></form>
-<mat-form-field appearance="fill">
-  <mat-label>Query Date</mat-label>
-  <input
-    matInput
-    [ngModel]="queryDate"
-    [matDatepicker]="picker"
-    (dateInput)="addEvent($event)"
-    (dateChange)="addEvent($event)"
-  />
-  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
-</mat-form-field>
-<mat-button-toggle-group *ngFor="let interval of intervals">
-  <mat-button-toggle color="primary" (click)="getData(interval)">{{
-    interval
-  }}</mat-button-toggle>
-</mat-button-toggle-group>
+<div class="flex">
+  <mat-form-field appearance="fill">
+    <mat-label>Query Date</mat-label>
+    <input
+      matInput
+      [ngModel]="queryDate"
+      [matDatepicker]="picker"
+      (dateInput)="addEvent($event)"
+      (dateChange)="addEvent($event)"
+    />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-button-toggle-group *ngFor="let interval of intervals">
+    <mat-button-toggle color="primary" (click)="getData(interval)">{{
+      interval
+    }}</mat-button-toggle>
+  </mat-button-toggle-group>
+</div>

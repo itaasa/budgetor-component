@@ -8,18 +8,14 @@ import { getTypeTotalViewModels } from '../store/budget-entry.selectors';
 @Component({
   selector: 'app-type-totals',
   templateUrl: './type-totals.component.html',
-  styleUrls: ['./type-totals.component.scss']
+  styleUrls: ['./type-totals.component.scss'],
 })
 export class TypeTotalsComponent implements OnInit {
-
   public typeTotalViewModels$: Observable<TypeTotalViewModel[]>;
 
   constructor(private store: Store<BudgetEntryState>) {
-    this.typeTotalViewModels$ = this.store.select(getTypeTotalViewModels).pipe(
-        map(typeTotalViewModels => typeTotalViewModels.filter((typeTotalViewModel: TypeTotalViewModel) => typeTotalViewModel.total))
-      );
+    this.typeTotalViewModels$ = this.store.select(getTypeTotalViewModels);
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 }

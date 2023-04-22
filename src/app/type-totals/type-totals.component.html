@@ -1,10 +1,9 @@
-<div *ngIf="typeTotalViewModels$ | async as typeTotals">
-    <mat-grid-list cols="{{ typeTotals.length }}" rowHeight="2:1">
-        <mat-grid-tile 
-            [colspan]="1"
-            [rowspan]="1" 
-            *ngFor="let typeTotal of typeTotals">
-            <app-type-total-view [typeTotal]="typeTotal"></app-type-total-view>
-        </mat-grid-tile>
-    </mat-grid-list>
+<div
+  class="flex flex-column type-totals"
+  *ngIf="typeTotalViewModels$ | async as typeTotals"
+>
+  <app-type-total-view
+    *ngFor="let typeTotal of typeTotals"
+    [typeTotal]="typeTotal"
+  ></app-type-total-view>
 </div>

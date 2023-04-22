@@ -1,22 +1,8 @@
-<mat-grid-list cols="2" rowHeight="6:1">
-    <mat-grid-tile
-        [colspan]="1"
-        [rowspan]="1">
-        <app-budget-query></app-budget-query>
-    </mat-grid-tile>
-    <mat-grid-tile
-        [colspan]="1"
-        [rowspan]="1">
-        <app-type-totals></app-type-totals>
-    </mat-grid-tile>
-    <mat-grid-tile
-        [colspan]="1"
-        [rowspan]="3">
-        <app-add-budget-entry></app-add-budget-entry>
-    </mat-grid-tile>
-    <mat-grid-tile
-        [colspan]="1"
-        [rowspan]="6">
-        <app-budget-entries></app-budget-entries>
-    </mat-grid-tile>
-</mat-grid-list>
+<div class="flex flex-justify-content-center">
+  <app-type-totals></app-type-totals>
+  <div>
+    <app-budget-query></app-budget-query>
+    <app-add-budget-entry></app-add-budget-entry>
+  </div>
+</div>
+<app-budget-entries></app-budget-entries>

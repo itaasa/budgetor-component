@@ -1,7 +1,7 @@
 <div *ngIf="intervalTotal$ | async as intervalTotal">
   <h1>
     Your {{ intervalTotal.interval }} stats as of
-    {{ intervalTotal.date | date }}
+    {{ queryDate$ | async | date }}
   </h1>
   <h2>Spent: {{ intervalTotal.spent | currency }}</h2>
   <h2>Budget Max: {{ intervalTotal.budget | currency }}</h2>

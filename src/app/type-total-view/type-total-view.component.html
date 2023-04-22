@@ -1,7 +1,16 @@
 <mat-card class="type-total-view">
   <mat-card-title>{{ typeTotal.type }}</mat-card-title>
-  <mat-card-subtitle
+  <mat-card-subtitle *ngIf="typeTotal.maxTotal; else noMaxTotal"
     >{{ typeTotal.total | currency }} /
     {{ typeTotal.maxTotal | currency }}</mat-card-subtitle
   >
+  <mat-progress-bar
+    mode="determinate"
+    value="{{ barPercentage }}"
+    color="{{ barColor }}"
+  ></mat-progress-bar>
 </mat-card>
+
+<ng-template #noMaxTotal>
+  <mat-card-subtitle>{{ typeTotal.total | currency }} </mat-card-subtitle>
+</ng-template>

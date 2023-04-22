@@ -1,21 +1,52 @@
 <div *ngIf="intervalTotal$ | async as intervalTotal">
-  <h2>
+  <h2 class="center-align">
     Your {{ intervalTotal.interval }} stats as of
     {{ queryDate$ | async | date }}
   </h2>
-  <mat-card>
-    <mat-card-title>SPENT</mat-card-title>
-    <mat-card-subtitle>{{ intervalTotal.spent | currency }}</mat-card-subtitle>
-  </mat-card>
-  <mat-card>
-    <mat-card-title>MAX</mat-card-title>
-    <mat-card-subtitle>{{ intervalTotal.budget | currency }}</mat-card-subtitle>
-  </mat-card>
-  <mat-card>
-    <mat-card-title>NET</mat-card-title>
-    <mat-card-subtitle
-      [style.color]="intervalTotal.net < 0 ? 'red' : 'green'"
-      >{{ intervalTotal.net | currency }}</mat-card-subtitle
-    >
-  </mat-card>
+  <div class="flex">
+    <div class="pure-stats">
+      <h3 class="center-align">Pure</h3>
+      <mat-card>
+        <mat-card-title>Spent</mat-card-title>
+        <mat-card-subtitle>{{
+          intervalTotal.spent | currency
+        }}</mat-card-subtitle>
+      </mat-card>
+      <mat-card>
+        <mat-card-title>Max</mat-card-title>
+        <mat-card-subtitle>{{
+          intervalTotal.budget | currency
+        }}</mat-card-subtitle>
+      </mat-card>
+      <mat-card>
+        <mat-card-title>Net</mat-card-title>
+        <mat-card-subtitle
+          [style.color]="intervalTotal.net < 0 ? 'red' : 'green'"
+          >{{ intervalTotal.net | currency }}</mat-card-subtitle
+        >
+      </mat-card>
+    </div>
+    <div>
+      <h3 class="center-align">Intermittent</h3>
+      <mat-card>
+        <mat-card-title>Spent</mat-card-title>
+        <mat-card-subtitle>{{
+          intervalTotal.nonEmergencySpent | currency
+        }}</mat-card-subtitle>
+      </mat-card>
+      <mat-card>
+        <mat-card-title>Max</mat-card-title>
+        <mat-card-subtitle>{{
+          intervalTotal.budget | currency
+        }}</mat-card-subtitle>
+      </mat-card>
+      <mat-card>
+        <mat-card-title>Net</mat-card-title>
+        <mat-card-subtitle
+          [style.color]="intervalTotal.nonEmergencyNet < 0 ? 'red' : 'green'"
+          >{{ intervalTotal.nonEmergencyNet | currency }}</mat-card-subtitle
+        >
+      </mat-card>
+    </div>
+  </div>
 </div>

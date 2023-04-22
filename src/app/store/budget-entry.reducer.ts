@@ -21,6 +21,8 @@ const initialIntervalTotal: IntervalTotal = {
   budget: 0,
   net: 0,
   date: '',
+  nonEmergencySpent: 0,
+  nonEmergencyNet: 0,
 };
 
 const initialState: BudgetEntryState = {

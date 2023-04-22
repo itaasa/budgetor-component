@@ -36,4 +36,6 @@ export interface IntervalTotal {
   budget: number;
   net: number;
   date: string;
+  nonEmergencySpent: number;
+  nonEmergencyNet: number;
 }

@@ -28,3 +28,8 @@ export const getIntervalTotal = createSelector(
   getBudgetEntryState,
   (state) => state.intervalTotal
 );
+
+export const getAverages = createSelector(
+  getBudgetEntryState,
+  (state) => state.averages
+);

@@ -28,6 +28,7 @@ export interface TypeTotalViewModel {
   type: BudgetType;
   total: number;
   maxTotal?: number;
+  average: Average;
 }
 
 export interface IntervalTotal {
@@ -38,4 +39,9 @@ export interface IntervalTotal {
   date: string;
   nonEmergencySpent: number;
   nonEmergencyNet: number;
+}
+
+export interface Average {
+  type: BudgetType;
+  average: number;
 }

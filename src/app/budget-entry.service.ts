@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
 import {
+  Average,
   BudgetEntry,
   Interval,
   IntervalTotal,
@@ -64,5 +65,10 @@ export class BudgetEntryService {
   public deleteBudgetEntry(budgetEntry: BudgetEntry): Observable<BudgetEntry> {
     const url = `${this.apiUrl}budget-entry/${budgetEntry._id}`;
     return this.http.delete<BudgetEntry>(url, this.httpOptions);
+  }
+
+  public getAverage(interval: Interval): Observable<Average[]> {
+    const url = `${this.apiUrl}average?interval=${interval}`;
+    return this.http.get<Average[]>(url, this.httpOptions);
   }
 }

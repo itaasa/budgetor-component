@@ -13,6 +13,10 @@ export class TypeTotalViewComponent implements OnInit {
     type: BudgetType.Want,
     total: 0,
     maxTotal: 0,
+    average: {
+      type: BudgetType.Gas,
+      average: 0,
+    },
   };
 
   barPercentage = 0;

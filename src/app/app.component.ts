@@ -23,5 +23,8 @@ export class AppComponent implements OnInit {
     this.store.dispatch(BudgetEntryActions.loadBudgetEntries());
     this.store.dispatch(BudgetEntryActions.loadTypeTotalViewModels());
     this.store.dispatch(BudgetEntryActions.loadIntervalTotal());
+    this.store.dispatch(
+      BudgetEntryActions.loadAverages({ interval: Interval.Weekly })
+    );
   }
 }

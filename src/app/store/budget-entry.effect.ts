@@ -134,4 +134,19 @@ export class BudgetEntryEffects {
       )
     );
   });
+
+  loadAverages$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(BudgetEntryActions.loadAverages),
+      switchMap((action) =>
+        this.budgetEntryService
+          .getAverage(action.interval)
+          .pipe(
+            map((averages) =>
+              BudgetEntryActions.loadAveragesSuccess({ averages })
+            )
+          )
+      )
+    );
+  });
 }

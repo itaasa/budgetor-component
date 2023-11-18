@@ -1,5 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import {
+  Average,
   BudgetEntry,
   Interval,
   IntervalTotal,
@@ -71,4 +72,14 @@ export const loadIntervalTotal = createAction(
 export const loadIntervalTotalSuccess = createAction(
   `[Budget Entry] Load Interval Total Success`,
   props<{ intervalTotal: IntervalTotal }>()
+);
+
+export const loadAverages = createAction(
+  `[Budget Entry] Load Averages`,
+  props<{ interval: Interval }>()
+);
+
+export const loadAveragesSuccess = createAction(
+  `[Budget Entry] Load Averages Success`,
+  props<{ averages: Average[] }>()
 );

@@ -1,5 +1,6 @@
 <mat-card class="type-total-view">
   <mat-card-title>{{ typeTotal.type }}</mat-card-title>
+
   <mat-card-subtitle *ngIf="typeTotal.maxTotal; else noMaxTotal"
     >{{ typeTotal.total | currency }} /
     {{ typeTotal.maxTotal | currency }}</mat-card-subtitle
@@ -9,6 +10,8 @@
     value="{{ barPercentage }}"
     color="{{ barColor }}"
   ></mat-progress-bar>
+
+  <p class="footer">Weekly Average: {{ typeTotal.average.average }}</p>
 </mat-card>
 
 <ng-template #noMaxTotal>

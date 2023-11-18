@@ -1,5 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import {
+  Average,
   BudgetEntry,
   Interval,
   IntervalTotal,
@@ -13,6 +14,7 @@ export interface BudgetEntryState {
   queryDate: Date;
   typeTotalViewModels: TypeTotalViewModel[];
   intervalTotal: IntervalTotal;
+  averages: Average[];
 }
 
 const initialIntervalTotal: IntervalTotal = {
@@ -31,6 +33,7 @@ const initialState: BudgetEntryState = {
   queryDate: new Date(),
   typeTotalViewModels: [],
   intervalTotal: initialIntervalTotal,
+  averages: [],
 };
 
 export const budgetEntryReducer = createReducer<BudgetEntryState>(
@@ -71,6 +74,15 @@ export const budgetEntryReducer = createReducer<BudgetEntryState>(
       return {
         ...state,
         intervalTotal: action.intervalTotal,
+      };
+    }
+  ),
+  on(
+    BudgetEntryActions.loadAveragesSuccess,
+    (state, action): BudgetEntryState => {
+      return {
+        ...state,
+        averages: action.averages,
       };
     }
   )
